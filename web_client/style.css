@@ -158,7 +158,7 @@ button:hover {
 .log-error { color: red; }
 .log-info { color: blue; }
 
-/* Estilos para os cartões de tarefas e usuários */
+/* Adicionando estilos para os cartões de tarefas */
 .task-list-container, .user-list-box {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -216,7 +216,7 @@ button:hover {
     color: #666;
 }
 
-.task-footer, .user-footer {
+.task-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -230,12 +230,12 @@ button:hover {
     color: #999;
 }
 
-.task-actions button, .user-actions button {
+.task-actions button {
     padding: 5px 10px;
     font-size: 12px;
 }
 
-.task-actions button:hover, .user-actions button:hover {
+.task-actions button:hover {
     opacity: 0.8;
 }
 
