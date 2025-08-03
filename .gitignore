@@ -1,0 +1,55 @@
+# Ignorar arquivos Python
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+*.env
+
+# Ignorar arquivos Go
+# Executáveis gerados
+*.exe
+*.bin
+*.out
+
+# Módulos Go (instalados localmente)
+/go_server/go.sum
+/go_server/vendor/
+
+# Arquivos Go gerados pelo Protobuf (dentro da pasta 'pb')
+# Se você decidir commitar o código gerado para simplificar para outros usuários, COMENTE as linhas abaixo:
+#/go_server/pb/*.pb.go
+#/go_server/pb/*.grpc.pb.go
+
+# Ignorar arquivos Python gerados pelo Protobuf
+# Se você decidir commitar o código gerado para simplificar para outros usuários, COMENTE as linhas abaixo:
+#/python_client/tasks_pb2.py
+#/python_client/tasks_pb2_grpc.py
+
+# Arquivos de log e temporários
+*.log
+*.tmp
+*.swp
+
+# Pastas de build/dist
+build/
+dist/
+
+# Arquivos específicos do VS Code (alguns podem ser úteis, outros não)
+.vscode/*.log
+.vscode/*.code-workspace
+# Se você quiser ignorar tasks.json, descomente a linha abaixo:
+#.vscode/tasks.json
+
+# Ignorar arquivos específicos do sistema operacional
+.DS_Store # macOS
+Thumbs.db # Windows
+ehthumbs.db # Windows
+Desktop.ini # Windows
+
+# Ignorar arquivos de dependências de Node.js (se for usar no futuro)
+node_modules/
+npm-debug.log

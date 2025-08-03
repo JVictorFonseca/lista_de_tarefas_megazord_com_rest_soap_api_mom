@@ -1,0 +1,64 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Generate Protobuf/gRPC Go Code",
+            "type": "shell",
+            "command": "protoc",
+            "args": [
+                "--go_out=./go_server/pb",
+                "--go_opt=paths=source_relative",
+                "--go-grpc_out=./go_server/pb",
+                "--go-grpc_opt=paths=source_relative",
+                "tasks.proto"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate Protobuf/gRPC Python Code",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "grpc_tools.protoc",
+                "-I.",
+                "--python_out=./python_client",
+                "--grpc_python_out=./python_client",
+                "tasks.proto"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate All Protobuf/gRPC Code (Go & Python)",
+            "dependsOn": [
+                "Generate Protobuf/gRPC Go Code",
+                "Generate Protobuf/gRPC Python Code"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
