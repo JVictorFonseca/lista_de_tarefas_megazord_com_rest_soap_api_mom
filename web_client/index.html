@@ -8,53 +8,65 @@
 </head>
 <body>
     <div class="container">
-        <h1>Gerenciador de Tarefas e Usuários</h1>
+        <header>
+            <h1>Gerenciador de Sistemas Distribuídos</h1>
+            <nav class="main-nav">
+                <button class="nav-button active" onclick="showSection('tasks')">Tarefas</button>
+                <button class="nav-button" onclick="showSection('users')">Usuários</button>
+                <button class="nav-button" onclick="showSection('logs')">Logs</button>
+            </nav>
+        </header>
 
-        <div class="section">
-            <h2>Tarefas (gRPC via Gateway REST)</h2>
-            <div class="form-group">
-                <input type="text" id="taskTitle" placeholder="Título da Tarefa">
-                <input type="text" id="taskDescription" placeholder="Descrição">
-                <input type="text" id="taskCreatedBy" placeholder="Criado por">
-                <button onclick="createTask()">Criar Tarefa</button>
-            </div>
-            <div class="form-group">
-                <input type="number" id="updateTaskId" placeholder="ID da Tarefa">
-                <input type="text" id="updateTaskTitle" placeholder="Novo Título (opcional)">
-                <input type="text" id="updateTaskDescription" placeholder="Nova Descrição (opcional)">
-                <input type="text" id="updateTaskStatus" placeholder="Novo Status (opcional)">
-                <button onclick="updateTask()">Atualizar Tarefa</button>
-            </div>
-            <div class="form-group">
-                <input type="number" id="deleteTaskId" placeholder="ID da Tarefa">
-                <button onclick="deleteTask()">Deletar Tarefa</button>
-            </div>
-            <button onclick="listTasks()">Listar Tarefas</button>
-            <button onclick="getTaskById()">Buscar Tarefa por ID</button>
-            
-            <!-- NOVA SEÇÃO PARA EXIBIR A LISTA DE TAREFAS -->
-            <div id="tasksListContainer" class="task-list-container"></div>
-            <!-- FIM DA NOVA SEÇÃO -->
+        <main>
+            <section id="tasks-section" class="content-section active">
+                <h2>Tarefas (gRPC via Gateway REST)</h2>
+                <div class="input-controls">
+                    <div class="form-group create-task-form">
+                        <input type="text" id="taskTitle" placeholder="Título da Tarefa">
+                        <input type="text" id="taskDescription" placeholder="Descrição">
+                        <input type="text" id="taskCreatedBy" placeholder="Criado por">
+                        <button onclick="createTask()">Criar Tarefa</button>
+                    </div>
+                    <div class="form-group update-task-form">
+                        <input type="number" id="updateTaskId" placeholder="ID da Tarefa" min="1">
+                        <input type="text" id="updateTaskTitle" placeholder="Novo Título (opcional)">
+                        <input type="text" id="updateTaskDescription" placeholder="Nova Descrição (opcional)">
+                        <input type="text" id="updateTaskStatus" placeholder="Novo Status (opcional)">
+                        <button onclick="updateTask()">Atualizar Tarefa</button>
+                    </div>
+                    <div class="form-group delete-task-form">
+                        <input type="number" id="deleteTaskId" placeholder="ID da Tarefa" min="1">
+                        <button onclick="deleteTask()">Deletar Tarefa</button>
+                        <button onclick="getTaskById()">Buscar por ID</button>
+                    </div>
+                    <button class="action-button" onclick="listTasks()">Listar Todas as Tarefas</button>
+                </div>
+                
+                <div id="tasksListContainer" class="task-list-container"></div>
+            </section>
 
-            <div id="tasksOutput" class="output-box"></div>
-        </div>
+            <section id="users-section" class="content-section">
+                <h2>Usuários (SOAP via Gateway REST)</h2>
+                <div class="input-controls">
+                    <div class="form-group create-user-form">
+                        <input type="text" id="userName" placeholder="Nome do Usuário">
+                        <input type="email" id="userEmail" placeholder="E-mail do Usuário">
+                        <button onclick="createUser()">Criar Usuário</button>
+                    </div>
+                    <div class="form-group list-user-form">
+                        <button class="action-button" onclick="listUsers()">Listar Todos os Usuários</button>
+                        <input type="number" id="userId" placeholder="Buscar por ID" min="1">
+                        <button class="action-button" onclick="getUserById()">Buscar por ID</button>
+                    </div>
+                </div>
+                <div id="usersOutput" class="output-box user-list-box"></div>
+            </section>
 
-        <div class="section">
-            <h2>Usuários (SOAP via Gateway REST)</h2>
-            <div class="form-group">
-                <input type="text" id="userName" placeholder="Nome do Usuário">
-                <input type="email" id="userEmail" placeholder="E-mail do Usuário">
-                <button onclick="createUser()">Criar Usuário</button>
-            </div>
-            <button onclick="listUsers()">Listar Usuários</button>
-            <button onclick="getUserById()">Buscar Usuário por ID</button>
-            <div id="usersOutput" class="output-box"></div>
-        </div>
-
-        <div class="section">
-            <h2>Logs da Aplicação</h2>
-            <div id="appLogs" class="output-box"></div>
-        </div>
+            <section id="logs-section" class="content-section">
+                <h2>Logs da Aplicação</h2>
+                <div id="appLogs" class="output-box log-box"></div>
+            </section>
+        </main>
     </div>
 
     <script src="script.js"></script>
