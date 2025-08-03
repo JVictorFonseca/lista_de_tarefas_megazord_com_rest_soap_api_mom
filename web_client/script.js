@@ -5,6 +5,7 @@ const API_GATEWAY_URL = "http://localhost:8000"; // Address of your FastAPI Gate
 const tasksOutput = document.getElementById('tasksOutput');
 const usersOutput = document.getElementById('usersOutput');
 const appLogs = document.getElementById('appLogs');
+const tasksListContainer = document.getElementById('tasksListContainer');
 
 function log(message, type = 'info') {
     const logEntry = document.createElement('div');
@@ -29,12 +30,71 @@ async function handleResponse(response, outputElement) {
 
     if (response.ok) {
         log(`Request successful: ${response.status}`, 'success');
-        outputElement.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+
+        // NEW: Check if the response is a list of tasks
+        if (data.tasks && Array.isArray(data.tasks)) {
+            renderTasksList(data.tasks);
+        } else if (data.task) {
+            // Check if a single task was created/updated
+            renderTasksList([data.task]);
+        } else {
+            outputElement.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
     } else {
         log(`Request failed: ${response.status} - ${data.detail || response.statusText}`, 'error');
         outputElement.innerHTML = `<pre>Error: ${response.status} - ${data.detail || response.statusText}\n${JSON.stringify(data, null, 2)}</pre>`;
     }
 }
+
+// NEW: Function to render a list of tasks visually
+function renderTasksList(tasks) {
+    tasksListContainer.innerHTML = ''; // Clear previous tasks
+
+    if (tasks.length === 0) {
+        tasksListContainer.innerHTML = '<p class="info-message">Nenhuma tarefa encontrada.</p>';
+        return;
+    }
+
+    const taskListHtml = tasks.map(task => {
+        const statusClass = task.status === 'concluída' ? 'status-completed' : (task.status === 'em progresso' ? 'status-in-progress' : 'status-pending');
+        return `
+            <div class="task-card">
+                <div class="task-header">
+                    <span class="task-id">#${task.id}</span>
+                    <span class="task-status ${statusClass}">${task.status}</span>
+                </div>
+                <div class="task-body">
+                    <h3 class="task-title">${task.title}</h3>
+                    <p class="task-description">${task.description}</p>
+                </div>
+                <div class="task-footer">
+                    <span class="task-created-by">Criado por: ${task.created_by}</span>
+                    <div class="task-actions">
+                        <button onclick="fillTaskFormForUpdate(${task.id}, '${task.title}', '${task.description}', '${task.status}')">Editar</button>
+                        <button onclick="fillTaskFormForDelete(${task.id})">Excluir</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    tasksListContainer.innerHTML = taskListHtml;
+}
+
+// NEW: Helper functions to fill the forms for quick updates/deletes
+function fillTaskFormForUpdate(id, title, description, status) {
+    document.getElementById('updateTaskId').value = id;
+    document.getElementById('updateTaskTitle').value = title;
+    document.getElementById('updateTaskDescription').value = description;
+    document.getElementById('updateTaskStatus').value = status;
+    log(`Formulário de atualização preenchido para a Tarefa #${id}.`, 'info');
+}
+
+function fillTaskFormForDelete(id) {
+    document.getElementById('deleteTaskId').value = id;
+    log(`ID #${id} adicionado ao campo de exclusão.`, 'info');
+}
+
 
 // --- Task Operations (gRPC via Gateway) ---
 
@@ -202,4 +262,3 @@ async function getUserById() {
 document.addEventListener('DOMContentLoaded', () => {
     log("Application loaded. Ensure all backend services are running.", 'info');
 });
-
