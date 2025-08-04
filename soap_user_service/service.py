@@ -1,5 +1,5 @@
 # soap_user_service/service.py
-from spyne import Application, rpc, ServiceBase, Integer, Unicode, Iterable
+from spyne import Application, rpc, ServiceBase, Integer, Unicode, Iterable, Array
 from spyne.protocol.soap import Soap11
 from spyne.server.wsgi import WsgiApplication
 from wsgiref.simple_server import make_server
@@ -42,7 +42,7 @@ class UserService(ServiceBase):
             logging.info(f"User created: ID={user_id}, Name='{name}', Email='{email}'")
             return user
 
-    @rpc(_returns=Iterable(User))
+    @rpc(_returns=Array(User))
     def list_users(ctx):
         """
         Lists all registered users.
