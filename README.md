@@ -1,3 +1,7 @@
+Canva: https://www.canva.com/design/DAGvWmlY6oY/_BA6XeQjnBhe_NJ5dy145Q/edit?utm_content=DAGvWmlY6oY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+Vídeo: https://drive.google.com/file/d/1RUp4eH56886z_68clLrJEV4sTk3zNWwC/view?usp=drive_link
+
+
 # Gerenciador de Tarefas e Usuários Distribuído (gRPC, REST, SOAP, MOM) 
 
 Python (https://img.shields.io/badge/Python-3.x-blue.svg)
