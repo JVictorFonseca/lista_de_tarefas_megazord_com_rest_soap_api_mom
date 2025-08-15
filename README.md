@@ -109,7 +109,8 @@ Embora os arquivos gerados estejam incluídos para simplificar, se você precisa
   
 ### 4. Executar os Serviços Backend (Em Terminais Separados)
 
-<img width="1440" height="780" alt="image" src="https://github.com/user-attachments/assets/48d38546-fee3-4aad-b550-d4a488e06888" />
+<img width="1392" height="419" alt="image" src="https://github.com/user-attachments/assets/db7680af-b336-4c73-bb5f-dd0fe298ecdb" />
+
 
 
 Você precisará de três terminais separados para rodar os serviços backend.
@@ -124,6 +125,8 @@ ATENÇÃO: CONFIGURAÇÃO DE FIREWALL
 * gRPC Server: 50051 (TCP)
 
 * RabbitMQ: 5672 (TCP) e 15672 (TCP)
+  <img width="1379" height="614" alt="image" src="https://github.com/user-attachments/assets/77ae6321-8c4e-4b21-81f4-8508ba26cf8f" />
+
 
 #### a. Iniciar o RabbitMQ (MOM)
 
@@ -170,6 +173,17 @@ ATENÇÃO: CONFIGURAÇÃO DE FIREWALL
 ### 5. Executar os Clientes (Em Terminais/Navegadores Separados)
 
 #### a. Acessar o Cliente Web (Frontend)
+
+<img width="1264" height="647" alt="image" src="https://github.com/user-attachments/assets/4547c4ca-018a-4bae-80a6-914a1c2e4ffd" />
+<img width="1166" height="668" alt="image" src="https://github.com/user-attachments/assets/03cb0b5a-2831-4596-b86d-10074cdd53df" />
+<img width="1133" height="665" alt="image" src="https://github.com/user-attachments/assets/eb9709e9-5cd2-4dab-b8d7-d4ad94117548" />
+<img width="1413" height="666" alt="image" src="https://github.com/user-attachments/assets/17e2838a-3ae2-4c68-862d-6964ab6d193f" />
+<img width="1387" height="647" alt="image" src="https://github.com/user-attachments/assets/9a2e3aa7-b25e-4e41-81fe-ee67012531db" />
+
+
+
+
+
 
 1. Abra seu navegador web.
 
