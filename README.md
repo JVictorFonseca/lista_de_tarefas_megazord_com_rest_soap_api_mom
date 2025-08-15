@@ -109,6 +109,9 @@ Embora os arquivos gerados estejam incluídos para simplificar, se você precisa
   
 ### 4. Executar os Serviços Backend (Em Terminais Separados)
 
+<img width="1440" height="780" alt="image" src="https://github.com/user-attachments/assets/48d38546-fee3-4aad-b550-d4a488e06888" />
+
+
 Você precisará de três terminais separados para rodar os serviços backend.
 
 ATENÇÃO: CONFIGURAÇÃO DE FIREWALL 
